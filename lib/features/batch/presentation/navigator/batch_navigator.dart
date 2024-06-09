@@ -3,7 +3,7 @@ import 'package:student_management_starter/features/batch/presentation/view/batc
 
 class BatchViewNavigator {}
 
-mixin BatchRoute {
+mixin BatchViewRoute {
   openBatchView() {
     NavigateRoute.pushRoute(const BatchView());
   }

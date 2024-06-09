@@ -86,9 +86,15 @@ class _LoginViewState extends ConsumerState<LoginView> {
                           // Navigator.of(context).pushReplacement(MaterialPageRoute(
                           //   builder: (context) => const HomeView(),
                           // ));
+                          // ref
+                          //     .read(loginViewModelProvider.notifier)
+                          //     .openHomeView();
+                          // ref
+                          //     .read(loginViewModelProvider.notifier)
+                          // .openBatchView();
                           ref
                               .read(loginViewModelProvider.notifier)
-                              .openHomeView();
+                              .openCourseView();
                         }
                       },
                       child: const SizedBox(
