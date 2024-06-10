@@ -22,4 +22,8 @@ class BatchUseCase {
   Future<Either<Failure, List<BatchEntity>>> getAllBatches() {
     return iBatchRepository.getAllBatches();
   }
+
+  Future<Either<Failure, bool>> deleteBatch(BatchEntity batch) {
+    return iBatchRepository.deleteBatch(batch);
+  }
 }

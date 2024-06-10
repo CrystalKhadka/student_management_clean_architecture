@@ -48,4 +48,18 @@ class CourseLocalSource {
       return Left(Failure(error: e.toString()));
     }
   }
+
+  // Delete Course
+  Future<Either<Failure, bool>> deleteCourse(CourseEntity course) async {
+    try {
+      // Convert Entity to Hive Object
+      final hiveCourse = courseHiveModel.fromEntity(course);
+
+      // Add to Hive
+      await hiveService.deleteCourse(hiveCourse);
+      return const Right(true);
+    } catch (e) {
+      return Left(Failure(error: e.toString()));
+    }
+  }
 }

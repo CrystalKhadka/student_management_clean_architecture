@@ -59,11 +59,10 @@ class _CourseViewState extends ConsumerState<CourseView> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              gap,
               courseState.isLoading
                   ? const CircularProgressIndicator()
                   : courseState.lstCourses.isEmpty
-                      ? const Text('No Batches')
+                      ? const Text('No Courses')
                       : Expanded(
                           child: ListView.builder(
                             itemCount: courseState.lstCourses.length,
@@ -75,7 +74,13 @@ class _CourseViewState extends ConsumerState<CourseView> {
                                       courseState.lstCourses[index].courseId!),
                                   trailing: IconButton(
                                     icon: const Icon(Icons.delete),
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      ref
+                                          .read(
+                                              courseViewModelProvider.notifier)
+                                          .deleteCourse(
+                                              courseState.lstCourses[index]);
+                                    },
                                   ));
                             },
                           ),

@@ -52,4 +52,16 @@ class BatchLocalDataSource {
       return Left(Failure(error: e.toString()));
     }
   }
+
+  Future<Either<Failure, bool>> deleteBatch(BatchEntity batch) async {
+    try {
+      // Delete batches from Hive
+      final hiveBatch = batchHiveModel.fromEntity(batch);
+
+      await hiveService.deleteBatch(hiveBatch);
+      return const Right(true);
+    } catch (e) {
+      return Left(Failure(error: e.toString()));
+    }
+  }
 }

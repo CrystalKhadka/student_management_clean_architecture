@@ -19,4 +19,8 @@ class CourseUseCase {
   Future<Either<Failure, List<CourseEntity>>> getAllCourses() {
     return courseRepository.getAllCourses();
   }
+
+  Future<Either<Failure, bool>> deleteCourse(CourseEntity course) {
+    return courseRepository.deleteCourse(course);
+  }
 }

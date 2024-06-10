@@ -87,7 +87,13 @@ class _BatchViewState extends ConsumerState<BatchView> {
                                         batchState.lstBatches[index].batchId!),
                                     trailing: IconButton(
                                       icon: const Icon(Icons.delete),
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        ref
+                                            .read(
+                                                batchViewModelProvider.notifier)
+                                            .deleteBatch(
+                                                batchState.lstBatches[index]);
+                                      },
                                     ));
                               },
                             ),

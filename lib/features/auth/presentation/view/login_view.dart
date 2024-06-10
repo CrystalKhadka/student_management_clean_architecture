@@ -91,7 +91,7 @@ class _LoginViewState extends ConsumerState<LoginView> {
                           //     .openHomeView();
                           // ref
                           //     .read(loginViewModelProvider.notifier)
-                          // .openBatchView();
+                          //     .openBatchView();
                           ref
                               .read(loginViewModelProvider.notifier)
                               .openCourseView();
