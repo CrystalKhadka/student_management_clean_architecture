@@ -5,6 +5,6 @@ class HomeViewNavigator {}
 
 mixin HomeViewRoute {
   openHomeView() {
-    NavigateRoute.pushRoute(const HomeView());
+    NavigateRoute.popAndPushRoute(const HomeView());
   }
 }

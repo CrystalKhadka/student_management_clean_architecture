@@ -68,6 +68,7 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
       appBar: AppBar(
         title: const Text('Register'),
         centerTitle: true,
+        
       ),
       body: SafeArea(
         child: SingleChildScrollView(

@@ -6,3 +6,4 @@ class ThemeConstant {
   static const Color primaryColor = Colors.green;
   static const Color appBarColor = Colors.green;
 }
+

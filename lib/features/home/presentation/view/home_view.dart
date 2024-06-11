@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:student_management_starter/features/home/presentation/view/dashboard_view.dart';
 
 class HomeView extends ConsumerWidget {
   const HomeView({super.key});
@@ -33,14 +34,9 @@ class HomeView extends ConsumerWidget {
           ],
         ),
       ),
-      body: const SizedBox.expand(
-        child: Center(
-          child: Text(
-            'Dashboard ',
-          ),
-        ),
-      ),
+      body: const DashboardView(),
       bottomNavigationBar: BottomNavigationBar(
+        
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.dashboard),

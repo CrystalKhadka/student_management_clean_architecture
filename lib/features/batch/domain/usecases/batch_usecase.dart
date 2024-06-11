@@ -27,3 +27,4 @@ class BatchUseCase {
     return iBatchRepository.deleteBatch(batch);
   }
 }
+
