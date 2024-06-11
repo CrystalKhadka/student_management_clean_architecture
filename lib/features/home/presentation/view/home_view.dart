@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:student_management_starter/app/themes/theme_view_model.dart';
 import 'package:student_management_starter/features/batch/presentation/view/batch_view.dart';
 import 'package:student_management_starter/features/course/presentation/view/course_view.dart';
 import 'package:student_management_starter/features/home/presentation/view/dashboard_view.dart';
@@ -11,6 +12,7 @@ class HomeView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final homeState = ref.watch(homeViewModelProvider);
+    final themeState = ref.watch(themeViewModelNotifier);
     final lstViews = [
       const DashboardView(),
       const CourseView(),
@@ -44,8 +46,11 @@ class HomeView extends ConsumerWidget {
 
             // Theme toggle button
             Switch(
-              value: true,
-              onChanged: (value) {},
+              value: themeState,
+              onChanged: (value) {
+                
+                ref.read(themeViewModelNotifier.notifier).changeTheme();
+              },
             )
           ],
         ),
