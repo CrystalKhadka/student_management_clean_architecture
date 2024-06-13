@@ -22,6 +22,7 @@ class CourseWidget extends StatelessWidget {
             child: Text(
               courseList[index].courseName,
               style: const TextStyle(
+                color: Colors.black,
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
