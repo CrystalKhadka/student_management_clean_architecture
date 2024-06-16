@@ -51,6 +51,8 @@ class CourseApiModel extends Equatable {
     return entities.map((entity) => fromEntity(entity)).toList();
   }
 
+
+
   @override
   List<Object?> get props => [
         courseId,

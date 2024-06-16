@@ -18,8 +18,7 @@ class AuthRemoteRepository implements IAuthRepository {
   AuthRemoteRepository({required this.authRemoteDataSource});
   @override
   Future<Either<Failure, bool>> addStudent(AuthEntity auth) {
-    // TODO: implement addStudent
-    throw UnimplementedError();
+    return authRemoteDataSource.addStudent(auth);
   }
 
   @override

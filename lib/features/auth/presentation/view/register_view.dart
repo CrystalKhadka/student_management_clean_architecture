@@ -30,12 +30,13 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
   }
 
   File? _img;
+
   Future _browseImage(WidgetRef ref, ImageSource imageSource) async {
     try {
       final image = await ImagePicker().pickImage(source: imageSource);
       if (image != null) {
         _img = File(image.path);
-        ref.read(authViewModelProvider.notifier).uploadImage(_img!);
+        ref.read(authViewModelProvider.notifier).uploadImage(_img!).toString();
       } else {
         return;
       }
@@ -279,14 +280,14 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
                         if (_key.currentState!.validate()) {
                           // Register
                           AuthEntity auth = AuthEntity(
-                            fname: _fnameController.text,
-                            lname: _lnameController.text,
-                            phone: _phoneController.text,
-                            batch: _dropDownValue!,
-                            courses: _lstCourseSelected,
-                            username: _usernameController.text,
-                            password: _passwordController.text,
-                          );
+                              fname: _fnameController.text,
+                              lname: _lnameController.text,
+                              phone: _phoneController.text,
+                              batch: _dropDownValue!,
+                              courses: _lstCourseSelected,
+                              username: _usernameController.text,
+                              password: _passwordController.text,
+                              image: authState.imageName ?? '');
                           ref
                               .read(authViewModelProvider.notifier)
                               .addStudent(auth: auth);
