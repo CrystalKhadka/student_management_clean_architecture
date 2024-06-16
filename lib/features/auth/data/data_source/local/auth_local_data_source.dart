@@ -44,11 +44,12 @@ class AuthLocalDataSource {
   }
 
   // Login
-  Future<Either<Failure, bool>> login(String username, String password) async {
+  Future<Either<Failure, String>> login(
+      String username, String password) async {
     try {
       await hiveService.login(username, password);
 
-      return const Right(true);
+      return const Right('Login Success');
     } catch (e) {
       return Left(Failure(error: e.toString()));
     }

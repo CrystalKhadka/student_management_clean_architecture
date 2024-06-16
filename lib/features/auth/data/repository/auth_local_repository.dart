@@ -23,7 +23,7 @@ class AuthLocalRepository implements IAuthRepository {
   }
 
   @override
-  Future<Either<Failure, bool>> login(String username, String password) {
+  Future<Either<Failure, String>> login(String username, String password) {
     return authLocalDataSource.login(username, password);
   }
 

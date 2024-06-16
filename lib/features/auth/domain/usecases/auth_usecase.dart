@@ -19,7 +19,7 @@ class AuthUseCase {
     return authRepository.addStudent(auth);
   }
 
-  Future<Either<Failure, bool>> login(String username, String password) {
+  Future<Either<Failure, String>> login(String username, String password) {
     return authRepository.login(username, password);
   }
 
