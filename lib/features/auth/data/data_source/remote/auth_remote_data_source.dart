@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:student_management_starter/app/constants/api_endpoint.dart';
 import 'package:student_management_starter/core/failure/failure.dart';
 import 'package:student_management_starter/core/networking/remote/http_service.dart';
+import 'package:student_management_starter/core/shared_prefs/user_shared_prefs.dart';
 import 'package:student_management_starter/features/auth/data/model/auth_api_model.dart';
 import 'package:student_management_starter/features/auth/domain/entity/auth_entity.dart';
 
@@ -13,14 +14,19 @@ final authRemoteDataSourceProvider = Provider(
   (ref) => AuthRemoteDataSource(
     dio: ref.read(httpServiceProvider),
     authApiModel: ref.read(authApiModelProvider),
+    userSharedPrefs: ref.read(userSharedPrefsProvider),
   ),
 );
 
 class AuthRemoteDataSource {
   final Dio dio;
   final AuthApiModel authApiModel;
+  final UserSharedPrefs userSharedPrefs;
 
-  AuthRemoteDataSource({required this.dio, required this.authApiModel});
+  AuthRemoteDataSource(
+      {required this.dio,
+      required this.authApiModel,
+      required this.userSharedPrefs});
 
   // Future<Either<Failure,bool>> registerStudent(){}
 
@@ -77,7 +83,7 @@ class AuthRemoteDataSource {
     }
   }
 
-  Future<Either<Failure, String>> login(
+  Future<Either<Failure, bool>> login(
       {required String username, required String password}) async {
     try {
       var response = await dio.post(
@@ -89,7 +95,10 @@ class AuthRemoteDataSource {
       );
 
       if (response.statusCode == 200) {
-        return Right(response.data['token']);
+        String token = response.data["token"];
+        // Save token to shared prefs
+        await userSharedPrefs.setUserToken(token);
+        return const Right(true);
       }
       return Left(
         Failure(

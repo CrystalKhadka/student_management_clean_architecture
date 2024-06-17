@@ -22,7 +22,7 @@ class BatchRemoteRepository implements IBatchRepository {
 
   @override
   Future<Either<Failure, bool>> deleteBatch(BatchEntity batch) {
-    return batchRemoteDataSource.deleteBatch(batch);
+    return batchRemoteDataSource.deleteBatch(batch.batchId!);
   }
 
   @override
